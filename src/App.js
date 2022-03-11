@@ -121,8 +121,6 @@ function App() {
       console.log('POST request success');
     })
   }
-
-  }
   return (
     <div className="App">
       <div className="Input">
