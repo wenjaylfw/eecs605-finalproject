@@ -62,10 +62,10 @@ function App() {
     // temporarily disable submit button
     setButtonDisable(true);
     setButtonText('Loading Result');
-
-    // make POST request
+    
+    //make first POST request
     console.log('making POST request...');
-    fetch('<api-url>', {
+    fetch('https://80tl9latra.execute-api.us-east-1.amazonaws.com/prod/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Accept": "text/plain" },
       body: JSON.stringify({ "image": inputFileData })
@@ -78,6 +78,33 @@ function App() {
       if (data.statusCode === 400) {
         const outputErrorMessage = JSON.parse(data.errorMessage)['outputResultsData'];
         setOutputFileData(outputErrorMessage);
+      }
+
+      // POST request success
+      else {
+        const outputBytesData = JSON.parse(data.body);
+      }
+    })
+    .then(() => {
+      console.log('POST request success');
+    })
+  }
+    
+  const handleSubmit2 = (event) => {
+   // make POST request
+    console.log('making POST request...');
+    fetch('https://yz35rc3fsl.execute-api.us-east-1.amazonaws.com/prod/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json", "Accept": "text/plain" },
+      body: JSON.stringify({})
+    }).then(response => response.json())
+    .then(data => {
+      console.log('getting response...')
+      console.log(data);
+
+      // POST request error
+      if (data.statusCode === 400) {
+        setOutputFileData("File Not Ready");
       }
 
       // POST request success
@@ -95,17 +122,19 @@ function App() {
     })
   }
 
+  }
   return (
     <div className="App">
       <div className="Input">
         <h1>Input</h1>
         <form onSubmit={handleSubmit}>
-          <input type="file" accept=".png" onChange={handleChange} />
+          <input type="file" accept=".wav" onChange={handleChange} />
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
         </form>
       </div>
       <div className="Output">
-        <h1>Results</h1>
+        <h1>Get Results</h1>
+        <button onClick={handleSubmit2}>Check For Results</button>
         <p>{outputFileData}</p>
       </div>
     </div>
