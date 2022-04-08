@@ -197,12 +197,18 @@ function App() {
     <div className="App">
       <div className="Input">
         <h1>Input</h1>
+        <br/>
+        <p>Choose an audio file from the dropdown menu or upload your own</p>
+        <br/>
+    
+        <p>Once you choose or upload a file, press submit</p>
+        <br/>
         <label htmlFor="demo-dropdown">Demo: </label>
         <select name="Select Image" id="demo-dropdown" value={selectedDropdownFile} onChange={handleDropdown}>
             <option value="">-- Select Demo File --</option>
             {demoDropdownFiles.map((file) => <option key={file} value={file}>{file}</option>)}
         </select>
-
+        
         <form onSubmit={handleSubmit}>
           <input type="file" accept=".wav" onChange={handleChange} />
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
@@ -210,6 +216,8 @@ function App() {
       </div>
       <div className="Output">
         <h1>Get Results</h1>
+        <br/>
+        <p>Results may take up to 2 minutes to appear</p>
         <button onClick={handleSubmit2}>Check For Results</button>
         <p>{outputFileData}</p>
       </div>
