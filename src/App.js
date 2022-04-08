@@ -84,6 +84,44 @@ function App() {
     // enable submit button
     setButtonDisable(false);
   }
+  
+  
+     // handle demo dropdown file selection
+  const handleDropdown = (event) => {
+    setSelectedDropdownFile(event.target.value);
+
+    // temporarily disable submit button
+    setButtonDisable(true);
+    setSubmitButtonText('Loading Demo File...');
+
+    // only make POST request on file selection
+    if (event.target.value) {
+      fetch(DROPDOWN_API_ENDPOINT, {
+        method: 'POST',
+        body: JSON.stringify({ "fileName": event.target.value })
+      }).then(response => response.json())
+      .then(data => {
+
+        // POST request error
+        if (data.statusCode === 400) {
+          console.log('Uh oh! There was an error retrieving the dropdown file from the S3 bucket.')
+        }
+
+        // POST request success
+        else {
+          const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
+          setInputFileData(dropdownFileBytesData);
+          setInputImage('data:image/png;base64,' + dropdownFileBytesData); // hacky way of setting image from bytes data - even works on .jpeg lol
+          setSubmitButtonText('Submit');
+          setButtonDisable(false);
+        }
+      });
+    }
+
+    else {
+      setInputFileData('');
+    }
+  }
 
   // handle file submission
   const handleSubmit = (event) => {
@@ -153,43 +191,6 @@ function App() {
       console.log('POST request success');
     })
     
-    
-      // handle demo dropdown file selection
-  const handleDropdown = (event) => {
-    setSelectedDropdownFile(event.target.value);
-
-    // temporarily disable submit button
-    setButtonDisable(true);
-    setSubmitButtonText('Loading Demo File...');
-
-    // only make POST request on file selection
-    if (event.target.value) {
-      fetch(DROPDOWN_API_ENDPOINT, {
-        method: 'POST',
-        body: JSON.stringify({ "fileName": event.target.value })
-      }).then(response => response.json())
-      .then(data => {
-
-        // POST request error
-        if (data.statusCode === 400) {
-          console.log('Uh oh! There was an error retrieving the dropdown file from the S3 bucket.')
-        }
-
-        // POST request success
-        else {
-          const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
-          setInputFileData(dropdownFileBytesData);
-          setInputImage('data:image/png;base64,' + dropdownFileBytesData); // hacky way of setting image from bytes data - even works on .jpeg lol
-          setSubmitButtonText('Submit');
-          setButtonDisable(false);
-        }
-      });
-    }
-
-    else {
-      setInputFileData('');
-    }
-  }
 
   }
   return (
