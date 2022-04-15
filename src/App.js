@@ -27,6 +27,7 @@ function App() {
   const [demoDropdownFiles, setDemoDropdownFiles] = React.useState([]);
   const [selectedDropdownFile, setSelectedDropdownFile] = React.useState('');
   const [inputImage, setInputImage] = React.useState(''); // represented as bytes data (string)
+  let curr_track = document.createElement('audio');
 
 
   // convert file to bytes data
@@ -85,6 +86,12 @@ function App() {
     setButtonDisable(false);
   }
   
+  
+  const playpausetrac = (event) => {
+      curr_track.src = inputFileData;
+      curr_track.load();
+      curr_track.play()
+  }
   
      // handle demo dropdown file selection
   const handleDropdown = (event) => {
@@ -211,6 +218,11 @@ function App() {
           <input type="file" accept=".wav" onChange={handleChange} />
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
         </form>
+        <br/>
+            
+        <div class="playpause-track" onclick="playpauseTrack()">
+          <i class="fa fa-play-circle fa-5x"></i>
+        </div>
         <br/>
       </div>
       <div className="Output">
