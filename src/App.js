@@ -235,7 +235,7 @@ function App() {
           <button className="playbutton">Play</button>
         </div>
         <audio id="my-audio" controls>
-           <source src="Audio/Fire_Example.mp3" type="audio/mpeg">
+           <source src="Audio/Fire_Example.mp3" type="audio/mpeg"/>
         </audio>
         <br/>
       </div>
