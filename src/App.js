@@ -93,6 +93,7 @@ function App() {
   
   const playpausetrack = (event) => {
     if(fromDropDown){
+      console.log(AudioTitle);
       curr_track.src = AudioTitle;
       curr_track.load();
       curr_track.play();
@@ -124,6 +125,7 @@ function App() {
         // POST request success
         else {
           fromDropDown = true;
+          console.log(fromDropDown);
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
           setInputFileData(dropdownFileBytesData);
@@ -167,6 +169,7 @@ function App() {
       // POST request success
       else {
         fromDropDown = true;
+        console.log(fromDropDown);
         const outputBytesData = JSON.parse(data.body);
       }
     })
