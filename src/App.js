@@ -88,18 +88,6 @@ function App() {
     setButtonDisable(false);
   }
   
-  
-  const playpausetrack = (event) => {
-    if(dropDownSelected){
-      curr_track.src = "Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3";
-      console.log(String(selectedDropdownFile).split('.')[0] + ".mp3");
-      
-      console.log(curr_track.src);
-      curr_track.load();
-      curr_track.play();
-    }
-  }
-  
      // handle demo dropdown file selection
   const handleDropdown = (event) => {
     setSelectedDropdownFile(event.target.value);
@@ -124,7 +112,7 @@ function App() {
         // POST request success
         else {
           setDropDownSelected(true);
-          document.getElementById("my-audio").setAttribute('src', "Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3");
+          document.getElementById("my-audio").setAttribute('src', "https://wenjaylfw-demos.s3.amazonaws.com/" + selectedDropdownFile);
           document.getElementById("my-audio").play();
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
@@ -231,12 +219,9 @@ function App() {
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
         </form>
         <br/>
-            
-        <div className="playpause-track" onClick={playpausetrack}>
-          <button className="playbutton">Play</button>
-        </div>
+
         <audio id="my-audio" controls>
-           <source src="Audio/Fire_Example.mp3" type="audio/mpeg"/>
+           <source src="" type="audio/wav"/>
         </audio>
         <br/>
       </div>
