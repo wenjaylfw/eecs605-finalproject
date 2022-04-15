@@ -221,7 +221,7 @@ function App() {
         <br/>
             
         <div class="playpause-track" onclick="playpauseTrack()">
-          <i class="fa fa-play-circle fa-5x"></i>
+          <button>Play</button>
         </div>
         <br/>
       </div>
