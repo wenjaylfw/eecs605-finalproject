@@ -30,7 +30,8 @@ function App() {
   
   let curr_track = document.createElement('audio');
   let AudioTitle = "";
-  let fromDropDown = False;
+  let fromDropDown = false
+  ;
 
 
   // convert file to bytes data
@@ -122,7 +123,7 @@ function App() {
 
         // POST request success
         else {
-          fromDropDown = True;
+          fromDropDown = true;
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
           setInputFileData(dropdownFileBytesData);
@@ -165,7 +166,7 @@ function App() {
 
       // POST request success
       else {
-        fromDropDown = True;
+        fromDropDown = true;
         const outputBytesData = JSON.parse(data.body);
       }
     })
