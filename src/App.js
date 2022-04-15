@@ -91,7 +91,7 @@ function App() {
   
   const playpausetrack = (event) => {
     if(dropDownSelected){
-      
+      document.getElementById("my-audio").setAttribute('src', "Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3");
       curr_track.src = "Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3";
       console.log(String(selectedDropdownFile).split('.')[0] + ".mp3");
       
@@ -234,6 +234,9 @@ function App() {
         <div className="playpause-track" onClick={playpausetrack}>
           <button className="playbutton">Play</button>
         </div>
+        <audio id="my-audio" controls>
+           <source src="Audio/Fire_Example.mp3" type="audio/mpeg">
+        </audio>
         <br/>
       </div>
       <div className="Output">
