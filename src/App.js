@@ -90,10 +90,12 @@ function App() {
   
   
   const playpausetrack = (event) => {
-    console.log(curr_track.src);
     if(dropDownSelected){
       console.log(selectedDropdownFile);
+      
       curr_track.src = String(selectedDropdownFile).split('.')[0] + ".mp3";
+      
+      console.log(curr_track.src);
       curr_track.load();
       curr_track.play();
     }
