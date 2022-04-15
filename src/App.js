@@ -27,7 +27,10 @@ function App() {
   const [demoDropdownFiles, setDemoDropdownFiles] = React.useState([]);
   const [selectedDropdownFile, setSelectedDropdownFile] = React.useState('');
   const [inputImage, setInputImage] = React.useState(''); // represented as bytes data (string)
+  
   let curr_track = document.createElement('audio');
+  let AudioTitle = "";
+  let fromDropDown = False;
 
 
   // convert file to bytes data
@@ -88,14 +91,17 @@ function App() {
   
   
   const playpausetrack = (event) => {
-      curr_track.src = inputFileData;
+    if(fromDropDown){
+      curr_track.src = AudioTitle;
       curr_track.load();
-      curr_track.play()
+      curr_track.play();
+    }
   }
   
      // handle demo dropdown file selection
   const handleDropdown = (event) => {
     setSelectedDropdownFile(event.target.value);
+    AudioTitle = event.target.value;
 
     // temporarily disable submit button
     setButtonDisable(true);
@@ -116,6 +122,8 @@ function App() {
 
         // POST request success
         else {
+          fromDropDown = True;
+          
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
           setInputFileData(dropdownFileBytesData);
           setInputImage('data:image/png;base64,' + dropdownFileBytesData); // hacky way of setting image from bytes data - even works on .jpeg lol
@@ -157,6 +165,7 @@ function App() {
 
       // POST request success
       else {
+        fromDropDown = True;
         const outputBytesData = JSON.parse(data.body);
       }
     })
@@ -221,7 +230,7 @@ function App() {
         <br/>
             
         <div className="playpause-track" onClick={playpausetrack}>
-          <button>Play</button>
+          <button className="playbutton">Play</button>
         </div>
         <br/>
       </div>
