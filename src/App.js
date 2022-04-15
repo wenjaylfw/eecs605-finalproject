@@ -92,6 +92,8 @@ function App() {
   
   
   const playpausetrack = (event) => {
+    console.log("In onClick");
+    console.log(fromDropDown);
     if(fromDropDown){
       console.log(AudioTitle);
       curr_track.src = AudioTitle;
