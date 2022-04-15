@@ -211,7 +211,7 @@ function App() {
           <input type="file" accept=".wav" onChange={handleChange} />
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
         </form>
-        </br>
+        <br/>
       </div>
       <div className="Output">
         <h1>Get Results</h1>
