@@ -93,7 +93,7 @@ function App() {
     console.log(curr_track.src);
     if(dropDownSelected){
       console.log(selectedDropdownFile);
-      curr_track.src = selectedDropdownFile;
+      curr_track.src = String(selectedDropdownFile).split('.')[0] + ".mp3";
       curr_track.load();
       curr_track.play();
     }
