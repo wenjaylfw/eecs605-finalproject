@@ -28,10 +28,9 @@ function App() {
   const [selectedDropdownFile, setSelectedDropdownFile] = React.useState('');
   const [inputImage, setInputImage] = React.useState(''); // represented as bytes data (string)
   
-  let curr_track = document.createElement('audio');
-  let AudioTitle = "";
-  let fromDropDown = false
-  ;
+  const curr_track = document.createElement('audio');
+  const AudioTitle = "";
+  const fromDropDown = false;
 
 
   // convert file to bytes data
