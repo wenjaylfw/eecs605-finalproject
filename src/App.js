@@ -29,8 +29,7 @@ function App() {
   const [inputImage, setInputImage] = React.useState(''); // represented as bytes data (string)
   
   let curr_track = document.createElement('audio');
-  var AudioTitle = "";
-  var fromDropDown = false;
+  const [dropDownSelected, setDropDownSelected] = React.useState(false)
 
 
   // convert file to bytes data
@@ -92,9 +91,9 @@ function App() {
   
   const playpausetrack = (event) => {
     console.log(curr_track.src);
-    if(fromDropDown){
-      console.log(AudioTitle);
-      curr_track.src = AudioTitle;
+    if(dropDownSelected){
+      console.log(selectedDropdownFile);
+      curr_track.src = selectedDropdownFile;
       curr_track.load();
       curr_track.play();
     }
@@ -103,7 +102,6 @@ function App() {
      // handle demo dropdown file selection
   const handleDropdown = (event) => {
     setSelectedDropdownFile(event.target.value);
-    AudioTitle = event.target.value;
 
     // temporarily disable submit button
     setButtonDisable(true);
@@ -124,7 +122,7 @@ function App() {
 
         // POST request success
         else {
-          fromDropDown = true;
+          setDropdownSelected(true);
           console.log(fromDropDown);
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
@@ -168,7 +166,7 @@ function App() {
 
       // POST request success
       else {
-        fromDropDown = true;
+        setDropdownSelected(true);
         console.log(fromDropDown);
         const outputBytesData = JSON.parse(data.body);
       }
