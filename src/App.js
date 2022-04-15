@@ -112,9 +112,8 @@ function App() {
         // POST request success
         else {
           setDropDownSelected(true);
-          console.log(event.target.value);
-          console.log("https://wenjaylfw-demos.s3.amazonaws.com/" + selectedDropdownFile);
-          document.getElementById("my-audio").setAttribute('src', "https://wenjaylfw-demos.s3.amazonaws.com/" + selectedDropdownFile);
+          console.log("https://wenjaylfw-demos.s3.amazonaws.com/" + event.target.value);
+          document.getElementById("my-audio").setAttribute('src', "https://wenjaylfw-demos.s3.amazonaws.com/" + event.target.value);
           document.getElementById("my-audio").play();
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
