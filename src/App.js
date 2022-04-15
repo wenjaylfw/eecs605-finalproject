@@ -220,7 +220,7 @@ function App() {
         </form>
         <br/>
             
-        <div class="playpause-track" onclick="playpauseTrack()">
+        <div className="playpause-track" onClick="playpauseTrack()">
           <button>Play</button>
         </div>
         <br/>
