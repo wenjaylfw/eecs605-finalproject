@@ -92,7 +92,7 @@ function App() {
   const playpausetrack = (event) => {
     if(dropDownSelected){
       
-      curr_track.src = String(selectedDropdownFile).split('.')[0] + ".mp3";
+      curr_track.src = "Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3";
       console.log(String(selectedDropdownFile).split('.')[0] + ".mp3");
       
       console.log(curr_track.src);
