@@ -124,7 +124,8 @@ function App() {
         // POST request success
         else {
           setDropDownSelected(true);
-          document.getElementById("my-audio").setAttribute('src', required("Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3"));
+          const url = URL.createObjectURL("Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3")
+          document.getElementById("my-audio").setAttribute('src', url);
           document.getElementById("my-audio").play();
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
