@@ -125,7 +125,7 @@ function App() {
         else {
           setDropDownSelected(true);
           document.getElementById("my-audio").setAttribute('src', "Audio/" + String(selectedDropdownFile).split('.')[0] + ".mp3");
-          
+          document.getElementById("my-audio").play();
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
           setInputFileData(dropdownFileBytesData);
