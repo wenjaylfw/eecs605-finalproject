@@ -122,7 +122,7 @@ function App() {
 
         // POST request success
         else {
-          setDropdownSelected(true);
+          setDropDownSelected(true);
           console.log(fromDropDown);
           
           const dropdownFileBytesData = JSON.parse(data.body)['bytesData'];
@@ -166,7 +166,7 @@ function App() {
 
       // POST request success
       else {
-        setDropdownSelected(true);
+        setDropDownSelected(true);
         console.log(fromDropDown);
         const outputBytesData = JSON.parse(data.body);
       }
