@@ -211,8 +211,8 @@ function App() {
           <input type="file" accept=".wav" onChange={handleChange} />
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
         </form>
+        </br>
       </div>
-      </br>
       <div className="Output">
         <h1>Get Results</h1>
         <p>Results may take up to 2 minutes to appear</p>
