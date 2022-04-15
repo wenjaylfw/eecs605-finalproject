@@ -87,7 +87,7 @@ function App() {
   }
   
   
-  const playpausetrac = (event) => {
+  const playpausetrack = (event) => {
       curr_track.src = inputFileData;
       curr_track.load();
       curr_track.play()
@@ -220,7 +220,7 @@ function App() {
         </form>
         <br/>
             
-        <div className="playpause-track" onClick="playpauseTrack()">
+        <div className="playpause-track" onClick={playpausetrack}>
           <button>Play</button>
         </div>
         <br/>
