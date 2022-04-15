@@ -198,9 +198,7 @@ function App() {
       <div className="Input">
         <h1>Input</h1>
         <br/>
-        <p>Choose an audio file from the dropdown menu or upload your own</p>
-        <br/>
-    
+        <p>Choose an audio file from the dropdown menu or upload your own</p>    
         <p>Once you choose or upload a file, press submit</p>
         <br/>
         <label htmlFor="demo-dropdown">Demo: </label>
@@ -214,9 +212,9 @@ function App() {
           <button type="submit" disabled={buttonDisable}>{buttonText}</button>
         </form>
       </div>
+      </br>
       <div className="Output">
         <h1>Get Results</h1>
-        <br/>
         <p>Results may take up to 2 minutes to appear</p>
         <button onClick={handleSubmit2}>Check For Results</button>
         <p>{outputFileData}</p>
