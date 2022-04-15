@@ -203,35 +203,39 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="Input">
-        <h1>Input</h1>
-        <br/>
-        <p>Choose an audio file from the dropdown menu or upload your own</p>    
-        <p>Once you choose or upload a file, press submit</p>
-        <br/>
-        <label htmlFor="demo-dropdown">Demo: </label>
-        <select name="Select Image" id="demo-dropdown" value={selectedDropdownFile} onChange={handleDropdown}>
-            <option value="">-- Select Demo File --</option>
-            {demoDropdownFiles.map((file) => <option key={file} value={file}>{file}</option>)}
-        </select>
-        <br/>
-        <form onSubmit={handleSubmit}>
-          <input type="file" accept=".wav" onChange={handleChange} />
-          <button type="submit" disabled={buttonDisable}>{buttonText}</button>
-        </form>
-        <br/>
-        
-        <p>Playback for Selectable Demos</p>
-        <audio id="my-audio" controls>
-           <source src="" type="audio/wav"/>
-        </audio>
-        <br/>
+      <div className="float-child">
+        <div className="Input">
+          <h1>Input</h1>
+          <br/>
+          <p>Choose an audio file from the dropdown menu or upload your own</p>    
+          <p>Once you choose or upload a file, press submit</p>
+          <br/>
+          <label htmlFor="demo-dropdown">Demo: </label>
+          <select name="Select Image" id="demo-dropdown" value={selectedDropdownFile} onChange={handleDropdown}>
+              <option value="">-- Select Demo File --</option>
+              {demoDropdownFiles.map((file) => <option key={file} value={file}>{file}</option>)}
+          </select>
+          <br/>
+          <form onSubmit={handleSubmit}>
+            <input type="file" accept=".wav" onChange={handleChange} />
+            <button type="submit" disabled={buttonDisable}>{buttonText}</button>
+          </form>
+          <br/>
+
+          <p>Playback for Selectable Demos</p>
+          <audio id="my-audio" controls>
+             <source src="" type="audio/wav"/>
+          </audio>
+          <br/>
+        </div>
       </div>
-      <div className="Output">
-        <h1>Get Results</h1>
-        <p>Results may take up to 2 minutes to appear</p>
-        <button onClick={handleSubmit2}>Check For Results</button>
-        <p>{outputFileData}</p>
+      <div className="float-child">
+        <div className="Output">
+          <h1>Get Results</h1>
+          <p>Results may take up to 2 minutes to appear</p>
+          <button onClick={handleSubmit2}>Check For Results</button>
+          <p>{outputFileData}</p>
+        </div>
       </div>
     </div>
   );
