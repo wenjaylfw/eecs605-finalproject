@@ -27,6 +27,7 @@ function App() {
   const [demoDropdownFiles, setDemoDropdownFiles] = React.useState([]);
   const [selectedDropdownFile, setSelectedDropdownFile] = React.useState('');
   const [inputImage, setInputImage] = React.useState(''); // represented as bytes data (string)
+  const [outputImage, setOutputImage] = React.useState(''); //represented as bytes data
   
   let curr_track = document.createElement('audio');
   const [dropDownSelected, setDropDownSelected] = React.useState(false)
@@ -188,6 +189,8 @@ function App() {
         const outputBytesData = JSON.parse(data.body)['outputResultsData'];
         setOutputFileData(decodeFileBase64(outputBytesData));
         
+        const setOutputImage(JSON.parse(data.image)['outputImageData']);
+        
         // re-enable submit button
         setButtonDisable(false);
         setButtonText('Submit');
@@ -236,6 +239,7 @@ function App() {
             <p>Results may take up to 2 minutes to appear</p>
             <button onClick={handleSubmit2}>Check For Results</button>
             <p>{outputFileData}</p>
+            <img id="outputImage" src="data:image/png;base64, {outputImage}"/>
           </div>
           <a href="https://drive.google.com/file/d/1X9Y3pEVsyaKM6Ffe0FgZw0TQHMgwBouB/view?usp=sharing">Technical Report</a>
         </div>
