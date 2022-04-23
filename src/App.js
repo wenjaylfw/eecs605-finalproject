@@ -237,7 +237,7 @@ function App() {
             <button onClick={handleSubmit2}>Check For Results</button>
             <p>{outputFileData}</p>
           </div>
-          <a href="https://drive.google.com/file/d/1mDBbp-96ZZyPfAAyS0bFGKCiRk14SQP7/view?usp=sharing">Technical Report</a>
+          <a href="https://drive.google.com/file/d/1X9Y3pEVsyaKM6Ffe0FgZw0TQHMgwBouB/view?usp=sharing">Technical Report</a>
         </div>
       </div>
     </div>
